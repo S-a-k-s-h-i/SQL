@@ -1,0 +1,10 @@
+Q- Write a SQL query to find the second highest salary from a table named employees.
+
+RESULT-
+SELECT MAX(salary) AS second_highest_salary 
+from employees where salary<(SELECT MAX(salary) from employees);
+
+Q- Write a SQL query to get the department-wise employee count.
+
+select department_id,COUNT(employee_id) AS employee_count 
+from employees GROUP BY department_id;

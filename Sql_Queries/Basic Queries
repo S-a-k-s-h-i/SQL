@@ -1,0 +1,27 @@
+//IN OPERATOR
+SELECT * from employees WHERE officeCode IN (1,2,4) ORDER BY officeCode;
+
+//NOT IN OPERATOR
+SELECT * from employees WHERE officeCode NOT IN (1,2,4) ORDER BY officeCode;
+
+//BETWEEN OPERATOR
+SELECT * from customers WHERE creditLimit>=20000 AND creditLimit<=40000;
+SELECT * from customers WHERE creditLimit BETWEEN 20000 AND 40000;
+
+//REGEXP OPERATOR [use for pattern matching]
+^ begining of the string
+$ ending of the string
+| logical OR [Pipe operator]
+[abcd]
+[a-z]
+-- employess working in sales
+SELECT * FROM employess WHERE jobTitle REGEXP 'sale';
+-- jobTitle which start with word sales
+SEELECT * FROM employees WHERE jobTitle REGEXP '^sale';
+-- jobTitle which ends with word rep
+SEELECT * FROM employees WHERE jobTitle REGEXP 'rep$';
+-- where firstName begins with L or J
+SELECT * FROM employees WHERE =firstName REGEXP '^l|^j';
+SELECT * FROM employees WHERE =firstName REGEXP '^[abcde]'; //begins with one of these
+SELECT * FROM employees WHERE =firstName REGEXP '^[a-e]'; //begins with any between a to e
+
