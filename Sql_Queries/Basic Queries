@@ -25,3 +25,22 @@ SELECT * FROM employees WHERE =firstName REGEXP '^l|^j';
 SELECT * FROM employees WHERE =firstName REGEXP '^[abcde]'; //begins with one of these
 SELECT * FROM employees WHERE =firstName REGEXP '^[a-e]'; //begins with any between a to e
 
+//IS NULL OPERATOR
+--- customers where comment is null
+SELECT * FROM customers WHERE comments IS NULL;
+--- customers where comment is not null
+SELECT * FROM customers WHERE comments IS NOT NULL;
+
+//ORDER BY
+--- ordering the customers based on city in descending order, but if two customer
+--- have same city then contactLastName in asc
+SELECT city,customerLastName, customerFirstName,customerNumber
+FROM customers ORDER BY city DESC customerLastName;
+
+//LIMIT
+--- fetch first 10 customers
+SELECT * from customers LIMIT 10;
+--- fetch next 10 customers
+SELECT * FROM customers LIMIT 10,10;   //skip,nextCount
+--- fetch first 5 customers with highest creditLimit
+SELECT * FROM customers ORDER BY creditLimit DESC LIMIT 5;
