@@ -1,0 +1,26 @@
+# To find max, min amount from the payments done
+SELECT 
+MAX(amount) as highestPayment,
+MIN(amount) as lowestPayment,
+AVG(amount) as averagePayment
+SUM(amount) as totalPayment
+FROM payments;
+
+# Total orders and shipped orders
+//COUNT will only count non- null values
+
+SELECT 
+COUNT(*) as totalOrders,  //will give you total rows in the table
+COUNT(requiredDate) as totalOrders,
+COUNT(shippedDate) as shippedOrders
+FROM orders;
+
+# Count of orders which in process
+SELECT COUNT(*) AS 'Under Process'
+FROM orders WHERE status='In Process';
+
+# On Date/String
+# Most recent order
+SELECT MAX(orderDate) As "Recent Order" FROM orders;
+
+SELECT MAX(checkNumber) FROM payments;

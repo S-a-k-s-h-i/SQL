@@ -1,0 +1,17 @@
+//INNER JOIN
+--- fetch all the transactions from payments tables with the payment details
+select payments.customerNumber,customerName,amount,paymentDate
+from payments JOIN customers
+ON customers.customerNumber = payments.customerNumber
+
+//SELF JOIN
+---joining on itself
+--- eg- We have employees table where we have reports To column pointing to employee on the same table now we have to list down the manager name.
+SELECT emp.employeeNumber, 
+emp.firstName,
+emp.jobTitle,
+mgr.firstName AS "Manager Name",
+mgr.jobTitle AS "Manager Title"
+FROM employees emp JOIN employees mgr
+ON emp.employeeNumber = mgr.employeeNumber 
+

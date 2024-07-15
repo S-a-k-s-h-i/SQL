@@ -1,0 +1,15 @@
+--- Summarising Data
+
+---- Real Life Business Usecase
+  --- # No of orders placed daily / monthly
+  --- # No of unique customers every month
+  --- # Year wise increase in profits/sales
+  --- # Month wise increase in enrollments
+  --- # Average rating per course
+
+---- Aggregate functions in MySQL
+  --- MAX()
+  --- MIN()
+  --- AVG()
+  --- SUM()
+  --- COUNT()
