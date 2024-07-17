@@ -1,0 +1,31 @@
+# Offices having more then 4 employees
+
+SELECT employees.officeCode,city,state,COUNT(*) AS 'employeesCount' 
+FROM employees join offices 
+ON employees.officeCode=offices.officeCode 
+GROUP BY employees.officeCode,city,state
+HAVING employeesCount>4; --- filter out rows after the grouping
+
+SELECT employees.officeCode,city,COUNT(*) AS 'employeesCount' 
+FROM employees join offices 
+ON employees.officeCode = offices.officeCode 
+WHERE employees.officeCode in (1,2,3,4)  --- filter out rows before the grouping
+GROUP BY employees.officeCode,city
+-- HAVING employeesCount>4;
+
+# Order of excution 
+FROM- select the table
+WHERE- filter out rows
+GROUP- perform grouping
+HAVING - filter on groups
+SELECT
+DISTINCT
+ORDER BY
+LIMIT
+
+#Country wise count of orders, display orders where orderCount>20
+SELECT country,COUNT(*) AS 'OrdersCount'
+FROM orders JOIN customers 
+ON orders.customerNumber = customers.customerNumber
+GROUP BY country
+HAVING OrdersCount>20;

@@ -17,3 +17,6 @@ SELECT employees.officeCode,city,state,COUNT(*) AS 'employeesCount'
 FROM employees join offices 
 ON employees.officeCode=offices.officeCode 
 GROUP BY employees.officeCode,city,state;
+
+
+
