@@ -1,1 +1,21 @@
 # Total payments from each customer after a certain date
+
+SELECT customerNumber,customerName,SUM(amount) AS totalOrderValue
+from payments JOIN customers 
+USING (customerNumber) 
+WHERE paymentDate>'2005-02-02'
+GROUP BY customerNumber;
+
+# For each order find out the total order Value, also sort total order value
+SELECT orderNumber,SUM(quantityOrdered*priceEach) as totalOrderValue
+FROM orderdetails 
+GROUP BY orderNumber 
+ORDER BY totalOrderValue DESC;
+
+--- display customer name as well
+SELECT od.orderNumber,o.customerNumber,c.customerName,SUM(quantityOrdered*priceEach) as totalOrderValue
+FROM orderdetails as od
+JOIN orders as o ON od.orderNumber = o.orderNumber
+JOIN customers as c ON o.customerNumber = c.customerNumber
+GROUP BY orderNumber 
+ORDER BY totalOrderValue DESC;
