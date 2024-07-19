@@ -19,3 +19,16 @@ JOIN orders as o ON od.orderNumber = o.orderNumber
 JOIN customers as c ON o.customerNumber = c.customerNumber
 GROUP BY orderNumber 
 ORDER BY totalOrderValue DESC;
+
+--- display sales person as well
+SELECT od.orderNumber,
+o.customerNumber,
+c.customerName,
+SUM(quantityOrdered*priceEach) as totalOrderValue, 
+CONCAT(e.firstName,' ',e.lastName) as 'sales person'
+FROM orderdetails as od
+JOIN orders as o ON od.orderNumber = o.orderNumber
+JOIN customers as c ON o.customerNumber = c.customerNumber
+JOIN employees as e ON c.salesRepEmployeeNumber = e.employeeNumber
+GROUP BY orderNumber 
+ORDER BY totalOrderValue DESC;
