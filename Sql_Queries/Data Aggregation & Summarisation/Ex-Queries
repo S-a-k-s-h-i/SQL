@@ -32,3 +32,13 @@ JOIN customers as c ON o.customerNumber = c.customerNumber
 JOIN employees as e ON c.salesRepEmployeeNumber = e.employeeNumber
 GROUP BY orderNumber 
 ORDER BY totalOrderValue DESC;
+
+#Total orders by each customer , with the sales rep 
+SELECT orders.customerNumber,
+customerName,
+COUNT(*) AS 'No of orders',
+firstName as EmployeeName
+FROM orders
+JOIN customers ON orders.customerNumber = customers.customerNumber 
+JOIN employees ON customers.salesRepEmployeeNumber = employees.employeeNumber
+GROUP BY customerNumber;
