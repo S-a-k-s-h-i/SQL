@@ -42,3 +42,10 @@ FROM orders
 JOIN customers ON orders.customerNumber = customers.customerNumber 
 JOIN employees ON customers.salesRepEmployeeNumber = employees.employeeNumber
 GROUP BY customerNumber;
+
+#No of orders thrugh each sales Representative
+SELECT salesRepEmployeeNumber,firstName,COUNT(*) 
+FROM customers JOIN orders 
+ON customers.customerNumber = orders.customerNumber 
+JOIN employees ON customers.salesRepEmployeeNumber = employees.employeeNumber 
+GROUP BY salesRepEmployeeNumber;
