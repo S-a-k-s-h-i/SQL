@@ -49,3 +49,17 @@ FROM customers JOIN orders
 ON customers.customerNumber = orders.customerNumber 
 JOIN employees ON customers.salesRepEmployeeNumber = employees.employeeNumber 
 GROUP BY salesRepEmployeeNumber;
+
+#Country wise count of orders
+select country, COUNT(*) AS totalOrders 
+from orders JOIN customers 
+where orders.customerNumber = customers.customerNumber 
+GROUP BY country;
+
+#Country wise count of orders on each day
+
+select country,orderDate, COUNT(*) AS totalOrders 
+from orders JOIN customers 
+where orders.customerNumber = customers.customerNumber 
+GROUP BY country,orderDate 
+ORDER BY country;
