@@ -63,3 +63,10 @@ from orders JOIN customers
 where orders.customerNumber = customers.customerNumber 
 GROUP BY country,orderDate 
 ORDER BY country;
+
+-- find customers whose total order value is greater then 80000
+SELECT c.customerNumber,c.customerName,SUM(od.quantityOrdered*od.priceEach) as totalOrderValue
+FROM orders o join orderdetails od ON o.orderNumber = od.orderNumber 
+join customers c ON o.customerNumber = c.customerNumber 
+GROUP BY c.customerNumber,c.customerName
+HAVING totalOrderValue > 80000;
