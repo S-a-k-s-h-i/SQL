@@ -1,0 +1,14 @@
+//Sub Queries
+//Query inside a query, nested query
+
+--- find products that have same product line as of "1917 Grand Touring Sedan"
+SELECT * from products where productLine = (SELECT productLine from products where productName = '1917 Grand Touring Sedan');
+
+--- find cars that our costlier then '1936 Mercedes-Benz 500K Special Roadster'
+SELECT * from products 
+where productLine REGEXP 'Car' 
+AND MSRP> (SELECT MSRP from products where productName = '1936 Mercedes-Benz 500K Special Roadster');
+
+-- find cars costlier then average cost of all cars
+SELECT * FROM products where productLine REGEXP 'cars' 
+AND MSRP > (SELECT AVG(MSRP) from products where productLine REGEXP 'cars');
